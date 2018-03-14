@@ -1,0 +1,26 @@
+{
+  "map": {
+    "bases":[
+      {"name": "base_light"  },
+      {"name": "base_dark"  },
+      {"name": "base_green"  },
+      {"name": "base_purple"  },
+      {"name": "base_light"  },
+      {"name": "base_metal"  },
+      {"name": "base_invisible"  }
+    ],
+    "base_variants":[
+      {"name": "none"  },
+      {"name": "physical"  },
+      {"name": "magic"  }
+    ],
+    "attachments":[
+      {"name": "head", "items":[{"name":"dark_eyemask"},{"name":"demon_horns"},{"name":"fire_horns"},{"name":"glasses"},{"name":"green_mask"},{"name":"yellow_mask"},{"name":"halo"},{"name":"long_hair"},{"name":"mega_hair"},{"name":"shades"}]},
+      {"name": "back", "items":[{"name":"dark_cape"},{"name":"blue_glow"},{"name":"red_glow"}]  },
+      {"name": "weapon", "requires_variant":"physical","items":[{"name":"ancient_axe"},{"name":"ancient_axe"},{"name":"ancient_staff"},{"name":"blood_dagger"},{"name":"blood_sword"},{"name":"fire_staff"},{"name":"frost_sword"},{"name":"hero_sword"},{"name":"lightsaber"}]},
+      {"name": "magic", "requires_variant":"magic","items":[{"name":"fire"},{"name":"ice"},{"name":"energy"},{"name":"dark"},{"name":"nature"}]},
+      {"name": "bonus","items":[{"name":"lasers"}]},
+      {"name": "marking","items":[{"name":"tribal"}]}
+    ]
+  }
+}

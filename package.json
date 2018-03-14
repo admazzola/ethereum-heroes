@@ -1,0 +1,23 @@
+{
+  "name": "ethereum-heroes",
+  "version": "1.0.0",
+  "description": "Avatars for Token Mining",
+  "main": "index.js",
+  "dependencies": {
+    "seedrandom": "^2.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/admazzola/ethereum-heroes.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/admazzola/ethereum-heroes/issues"
+  },
+  "homepage": "https://github.com/admazzola/ethereum-heroes#readme"
+}
