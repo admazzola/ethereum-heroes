@@ -1,26 +1,25 @@
 {
   "map": {
     "bases":[
-      {"name": "base_light"  },
-      {"name": "base_dark"  },
-      {"name": "base_green"  },
-      {"name": "base_purple"  },
-      {"name": "base_light"  },
-      {"name": "base_metal"  },
-      {"name": "base_invisible"  }
+      {"name": "base_light", "rarity": 35  },
+      {"name": "base_dark", "rarity": 35  },
+      {"name": "base_green", "rarity": 12  },
+      {"name": "base_purple", "rarity": 12  },
+      {"name": "base_metal", "rarity": 5  },
+      {"name": "base_invisible", "rarity": 1  }
     ],
     "base_variants":[
-      {"name": "none"  },
-      {"name": "physical"  },
-      {"name": "magic"  }
+      {"name": "none", "rarity": 10  },
+      {"name": "physical", "rarity": 45  },
+      {"name": "magic", "rarity": 45  }
     ],
     "attachments":[
-      {"name": "head", "items":[{"name":"dark_eyemask"},{"name":"demon_horns"},{"name":"fire_horns"},{"name":"glasses"},{"name":"green_mask"},{"name":"yellow_mask"},{"name":"halo"},{"name":"long_hair"},{"name":"mega_hair"},{"name":"shades"}]},
-      {"name": "back", "items":[{"name":"dark_cape"},{"name":"blue_glow"},{"name":"red_glow"}]  },
-      {"name": "weapon", "requires_variant":"physical","items":[{"name":"ancient_axe"},{"name":"ancient_axe"},{"name":"ancient_staff"},{"name":"blood_dagger"},{"name":"blood_sword"},{"name":"fire_staff"},{"name":"frost_sword"},{"name":"hero_sword"},{"name":"lightsaber"}]},
-      {"name": "magic", "requires_variant":"magic","items":[{"name":"fire"},{"name":"ice"},{"name":"energy"},{"name":"dark"},{"name":"nature"}]},
-      {"name": "bonus","items":[{"name":"lasers"}]},
-      {"name": "marking","items":[{"name":"tribal"}]}
+      {"name": "head", "items":[{"name":"dark_eyemask", "rarity": 5},{"name":"demon_horns", "rarity": 5},{"name":"fire_horns", "rarity": 5},{"name":"glasses", "rarity": 5},{"name":"green_mask", "rarity": 5},{"name":"yellow_mask", "rarity": 5},{"name":"halo", "rarity": 5},{"name":"long_hair", "rarity": 5},{"name":"mega_hair", "rarity": 5},{"name":"shades", "rarity": 5}]},
+      {"name": "back", "items":[{"name":"dark_cape", "rarity": 5},{"name":"blue_glow", "rarity": 5},{"name":"red_glow", "rarity": 5}]  },
+      {"name": "weapon", "requires_variant":"physical","items":[{"name":"ancient_axe", "rarity": 5},{"name":"ancient_axe", "rarity": 5},{"name":"ancient_staff", "rarity": 5},{"name":"blood_dagger", "rarity": 5},{"name":"blood_sword", "rarity": 5},{"name":"fire_staff", "rarity": 5},{"name":"frost_sword", "rarity": 5},{"name":"hero_sword", "rarity": 5},{"name":"lightsaber", "rarity": 5}]},
+      {"name": "magic", "requires_variant":"magic","items":[{"name":"fire", "rarity": 25},{"name":"ice", "rarity": 25},{"name":"energy", "rarity": 15},{"name":"dark", "rarity": 10},{"name":"nature", "rarity": 25}]},
+      {"name": "bonus","items":[{"name":"lasers", "rarity": 1}]},
+      {"name": "marking","items":[{"name":"tribal", "rarity": 5}]}
     ]
   }
 }
