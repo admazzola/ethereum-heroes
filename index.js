@@ -1,4 +1,4 @@
-
+var web3utils = require('web3-utils');
 var seedrandom = require('seedrandom');
 
 //be deterministically random
@@ -22,14 +22,36 @@ var plannedRenders = [];
 
 function init()
 {
+  var uniqueHeroes = [];
+  var heroFingerprints = [];
+
+
   for(var i=0;i<renderCount;i++)
   {
     var newHero = {id: i};
     newHero.dna = Math.floor(rng() * 1e16);
     newHero.components = buildComponents(newHero.dna);
-    console.log(newHero);
+
+
+    newHero.fingerprint = web3utils.sha3(JSON.stringify(newHero.components))
+
+
+    if(!heroFingerprints.includes(newHero.fingerprint))
+    {
+      heroFingerprints.push(newHero.fingerprint);
+      uniqueHeroes.push(newHero);
+
+      //console.log(JSON.stringify(newHero));
+    }else{
+        console.log("not adding duplicate", JSON.stringify(newHero));
+    }
+    //JSON.stringify(newHero)
   }
 
+
+
+  //generate PNGs
+  //uniqueHeroes.map
 
 }
 
@@ -65,18 +87,20 @@ function buildComponents(dna)
      }
    }
 
+   components.attachments = [];
+
    //add attachments
-   addAttachments(dna,components,"head");
-   addAttachments(dna,components,"back");
-   addAttachments(dna,components,"weapon");
-   addAttachments(dna,components,"magic");
-   addAttachments(dna,components,"bonus");
-   addAttachments(dna,components,"marking");
+   addAttachments(dna/61231,components,"head");
+   addAttachments(dna/1241,components,"back");
+   addAttachments(dna/84556,components,"weapon");
+   addAttachments(dna/6321,components,"magic");
+   addAttachments(dna/1892,components,"bonus");
+   addAttachments(dna/1731,components,"marking");
 
   return components;
 }
 
-function addAttachments(dna,components,type)
+function addAttachments(subDNA,components,type)
 {
   var attachment = imageMap.attachments.find(function(element) {
       return element.name == type
@@ -84,11 +108,28 @@ function addAttachments(dna,components,type)
 
 
   if(attachment.requires_variant != null && attachment.requires_variant != components.baseVariantComponent.name ){
-    console.log('does not support this type')
+  //  console.log('does not support this type')
     return;
   }
 
-   console.log('attach',attachment)
+
+  var itemSelector = (subDNA) % 100;
+  var raritySum = 0;
+  for(var j=0;j<attachment.items.length;j++)
+  {
+    var item = attachment.items[j];
+    raritySum += item.rarity;
+    if(itemSelector < raritySum){
+      components.attachments.push(item) ;
+      //console.log('attach',attachment)
+      break;
+    }
+  }
+
+
+
+
+
 
 }
 
