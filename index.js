@@ -17,7 +17,7 @@ var attachmentsCount = imageMap.attachments.length;
 
 
 
-var renderCount = 1000;
+var renderCount = 10000;
 
 var plannedRenders = [];
 
@@ -44,7 +44,7 @@ function init()
 
       //console.log(JSON.stringify(newHero));
     }else{
-        console.log("not adding duplicate", JSON.stringify(newHero));
+      //  console.log("not adding duplicate", JSON.stringify(newHero));
     }
     //JSON.stringify(newHero)
   }
@@ -52,17 +52,44 @@ function init()
 
 
   //generate PNGs
-  //uniqueHeroes.map
+   uniqueHeroes.map(item  => composeHeroRender(item) );
+
+   //stitch them into one giant 'quilt'
+   //...
+
+}
+
+function composeHeroRender(hero)
+{
 
 
-  var bgImage = './img/hero_base_dark_none.png',
-      frontImage = './img/hero_back_blue_glow.png',
-      resultImage = './img/result.png',
-      xy = '+0+0';
+  var baseImage = getBaseComponentImage(hero);// './img/hero_base_dark_none.png';
+  //    frontImage = './img/hero_back_blue_glow.png',
+  var resultImage = './img/build/hero_'+hero.id+'.png';
 
-  gm(bgImage)
-    .composite(frontImage)
-    .geometry(xy)
+
+ var composition = gm(baseImage);
+ //composition = composition.in('-background white -alpha remove');
+
+ composition = composition.compose('DstOver');
+
+
+ for(var j=0;j<hero.components.attachments.length;j++)
+ {
+
+   var attachment = hero.components.attachments[j];
+
+   var attachmentImage = getAttachmentImage(attachment);
+
+  // composition = composition.composite(attachmentImage);
+
+
+    composition = composition.in('-geometry', '+0+0');
+     composition = composition.in(attachmentImage);
+ }
+
+   
+  composition.background('transparent').flatten()
     .write(resultImage, function (err) {
       if (!err){
         console.log('All done');
@@ -70,8 +97,29 @@ function init()
         console.log(err);
       }
     });
-
 }
+
+
+  function getBaseComponentImage(hero)
+  {
+
+    var base_name = hero.components.baseComponent.name;
+    var variant_name= hero.components.baseVariantComponent.name;
+
+    return "./img/hero_"+base_name+"_"+variant_name+".png" ;
+
+  }
+
+  function getAttachmentImage(attachment)
+  {
+
+    var attachment_type = attachment.type;
+    var attachment_name = attachment.name;
+
+    return "./img/hero_"+attachment_type+"_"+attachment_name+".png" ;
+  }
+
+
 
 
 function buildComponents(dna)
@@ -138,6 +186,8 @@ function addAttachments(subDNA,components,type)
     var item = attachment.items[j];
     raritySum += item.rarity;
     if(itemSelector < raritySum){
+
+      item.type = type;
       components.attachments.push(item) ;
       //console.log('attach',attachment)
       break;
