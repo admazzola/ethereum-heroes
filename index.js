@@ -1,5 +1,6 @@
 var web3utils = require('web3-utils');
 var seedrandom = require('seedrandom');
+var gm = require('gm').subClass({imageMagick: true})
 
 //be deterministically random
 var randomSeed = 1011310;
@@ -52,6 +53,23 @@ function init()
 
   //generate PNGs
   //uniqueHeroes.map
+
+
+  var bgImage = './img/hero_base_dark_none.png',
+      frontImage = './img/hero_back_blue_glow.png',
+      resultImage = './img/result.png',
+      xy = '+0+0';
+
+  gm(bgImage)
+    .composite(frontImage)
+    .geometry(xy)
+    .write(resultImage, function (err) {
+      if (!err){
+        console.log('All done');
+      }else{
+        console.log(err);
+      }
+    });
 
 }
 
