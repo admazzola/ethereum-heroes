@@ -17,7 +17,7 @@ var attachmentsCount = imageMap.attachments.length;
 
 
 
-var renderCount = 10000;
+var renderCount = 1000;
 
 var plannedRenders = [];
 
@@ -88,7 +88,7 @@ function composeHeroRender(hero)
      composition = composition.in(attachmentImage);
  }
 
-   
+
   composition.background('transparent').flatten()
     .write(resultImage, function (err) {
       if (!err){
@@ -156,11 +156,15 @@ function buildComponents(dna)
    components.attachments = [];
 
    //add attachments
-   addAttachments(dna/61231,components,"head");
-   addAttachments(dna/1241,components,"back");
+
+      addAttachments(dna/1892,components,"bonus");
+
    addAttachments(dna/84556,components,"weapon");
    addAttachments(dna/6321,components,"magic");
-   addAttachments(dna/1892,components,"bonus");
+
+   addAttachments(dna/61231,components,"head");
+   addAttachments(dna/1241,components,"back");
+
    addAttachments(dna/1731,components,"marking");
 
   return components;
